@@ -22,10 +22,14 @@ $button-border-style: solid;
 $button-border-width: 1px;
 
 $button-font-family: $base-font-family;
-$button-font-size: $base-font-size;
+$button-font-size: ($base-font-size / 2);
 
 $button-radius: $base-radius;
 
+$button-small: $small-scale;
+$button-medium: $medium-scale;
+$button-large: $large-scale;
+$button-xlarge: $xlarge-scale;
 
 // =============================================================================
 // Buttons Styleguide
@@ -68,6 +72,19 @@ button,
   overflow: hidden;
   padding: $button-padding;
   position: relative;
+
+  &.small {
+    font-size: ($button-font-size * $button-small);
+  }
+  &.medium {
+    font-size: ($button-font-size * $button-medium);
+  }
+  &.large {
+    font-size: ($button-font-size * $button-large);
+  }
+  &.xlarge {
+    font-size: ($button-font-size * $button-xlarge);
+  }
 
   &:hover {
     background-color: $button-hover-background-color;

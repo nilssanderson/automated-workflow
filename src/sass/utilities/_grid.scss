@@ -9,8 +9,9 @@ $gutter: 20px;
 $columns: 12;
 $padding: ($gutter / 2);
 
-$column-background: $black;
+$column-background: transparent;
 $column-min-height: $gutter;
+$column-text-align: center;
 
 
 // ============================================================================= styleguide:ignore:start
@@ -97,6 +98,7 @@ Styleguide 2.2
 // Set background color of columns
 div[class^="col-"] {
   background-color: $column-background;
+  text-align: $column-text-align;
 };
 
 // ============================================================================= styleguide:ignore:start

@@ -1,0 +1,118 @@
+// =============================================================================
+// Fonts Variables
+// =============================================================================
+
+$header-one-font-size: 2.857rem;
+$header-two-font-size: 2.143rem;
+$header-three-font-size: 1.714rem;
+$header-four-font-size: 1.286rem;
+$header-five-font-size: 1rem;
+$header-six-font-size: .857rem;
+
+$blockquote-padding: 0;
+
+$extra-line-height: 1rem;
+
+// =============================================================================
+// Fonts Styleguide
+// =============================================================================
+
+/*
+
+Fonts
+
+markup:
+
+Styleguide 1.3
+
+*/
+
+
+// =============================================================================
+// Fonts Mixins
+// =============================================================================
+
+@if variable-exists(google-fonts) {
+  @each $font in $google-fonts {
+    $i: index($google-fonts, $font);
+    @import url('https://fonts.googleapis.com/css?family=#{$font}');
+  }
+}
+
+
+// =============================================================================
+// Fonts Code
+// =============================================================================
+
+body, p, li, strong {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: $header-font-weight;
+}
+
+h1, h2, h3, h4, h5, h6, blockquote {
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
+}
+
+h1 {
+    font-size: $header-one-font-size;
+    line-height: ($header-one-font-size + $extra-line-height);
+}
+
+h2 {
+    font-size: $header-two-font-size;
+    line-height: ($header-two-font-size + $extra-line-height);
+}
+
+h3 {
+    font-size: $header-three-font-size;
+    line-height: ($header-three-font-size + $extra-line-height);
+}
+
+h4 {
+    font-size: $header-four-font-size;
+    line-height: ($header-four-font-size + ($extra-line-height / 1.5));
+}
+
+h5 {
+    font-size: $header-five-font-size;
+    line-height: ($header-five-font-size + ($extra-line-height / 1.5));
+}
+
+h6 {
+    font-size: $header-six-font-size;
+    line-height: ($header-six-font-size + ($extra-line-height / 1.5));
+}
+
+blockquote {
+  font-size: $header-four-font-size;
+  line-height: ($header-four-font-size + ($extra-line-height / 1.5));
+  margin: 0;
+  padding: $blockquote-padding;
+  position: relative;
+
+  &:before,
+  &:after {
+    @include make-fa;
+  }
+
+  &:before {
+    content: $fa-var-quote-left;
+    left: -1.8rem;
+    position: absolute;
+  }
+
+  &:after {
+    content: $fa-var-quote-right;
+    left: .5rem;
+    position: relative;
+  }
+}

@@ -58,8 +58,13 @@ $neutral-color: darken($grey, 20%);
 // Fonts
 // =============================================================================
 
-$base-font-family: Helvetica, arial, sans-serif;
-$header-font-family: Helvetica, arial, sans-serif;
+$google-fonts: 'PT+Sans' 'Open+Sans' 'Ubuntu' 'Droid+Sans' 'Titillium+Web' 'Fjalla+One';
+
+$base-font-family: 'PT Sans', arial, sans-serif;
+$header-font-family: 'Fjalla One', arial, sans-serif;
+
+$base-font-weight: 300;
+$header-font-weight: 600;
 
 $base-font-size: 1.5rem;
 $header-font-size: $base-font-size;
@@ -72,6 +77,11 @@ $header-font-size: $base-font-size;
 $body-background: $white;
 $body-color: $black;
 $base-radius: 3px;
+
+$small-scale: .9;
+$medium-scale: 1;
+$large-scale: 1.1;
+$xlarge-scale: 1.5;
 
 
 // =============================================================================

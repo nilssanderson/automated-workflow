@@ -4,7 +4,10 @@
 
 @import '../variables.scss';
 @import 'mixins.scss';
+@import '../includes/fontawesome/font-awesome.scss';
 
+@import 'base.scss';
 @import 'buttons.scss';
+@import 'fonts.scss';
 @import 'grid.scss';
 @import 'images.scss';
