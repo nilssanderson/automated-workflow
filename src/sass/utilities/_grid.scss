@@ -1,0 +1,118 @@
+// =============================================================================
+// Grid Variables
+// =============================================================================
+
+
+
+// Set Grid (1170gs default)
+$column-width: 70px;
+$gutter: 30px;
+$columns: 12;
+$padding: ($gutter / 2);
+
+// Should it be responsive?
+$responsive: true;
+
+// Set container width relative to user variables
+$width: ($column-width * $columns) + ($gutter * ($columns - 1) + ($gutter * 2));
+
+$grid: true;
+
+
+
+// =============================================================================
+// Grid Styleguide
+// =============================================================================
+
+/*
+
+Grid
+
+markup:
+<div class="grid">
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-1"></div>
+  <div class="col-2"></div>
+  <div class="col-2"></div>
+  <div class="col-2"></div>
+  <div class="col-2"></div>
+  <div class="col-2"></div>
+  <div class="col-2"></div>
+  <div class="col-3"></div>
+  <div class="col-3"></div>
+  <div class="col-3"></div>
+  <div class="col-3"></div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
+  <div class="col-12"></div>
+</div>
+
+Styleguide 2.2
+
+*/
+
+
+// =============================================================================
+// Grid Code
+// =============================================================================
+
+// Set Base Container
+.grid {
+  // Set container width if responsive
+  @if $responsive == true {
+  	max-width:$width; // leave in or not?
+  	width:100%;
+  } @else {
+  	width:$width;
+  }
+
+  @include clearfix;
+  margin: $gutter auto 0;
+  padding: 0;
+}
+
+// Define Individual Grid Classes
+@for $i from 1 to ($columns + 1) {
+	// Calculate grid size in pixels
+	$grid: ($grid / $width) * 100%;
+
+	// Calculate responsive grid sizes if required
+	@if $responsive == true {
+		// Calculate grid size in pixels
+		$grid: ($grid / $width) * 100%;
+
+		// Get Gutter Percentage for Grids
+		$gutter-percentage: ($gutter / $width) * 100%;
+
+		.col-#{$i} {
+      background-color: $black;
+      min-height: $gutter;
+			width: $grid;
+			float: left;
+			margin:0 0 $gutter $gutter-percentage;
+		}
+
+	} @else {
+		$grid: ($grid / $width) * 100%;
+		.col-#{$i} {
+      background-color: $black;
+      min-height: $gutter;
+			width: $grid;
+			float: left;
+			margin:0 0 $gutter $gutter;
+		}
+	}
+}

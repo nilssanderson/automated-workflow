@@ -1,0 +1,87 @@
+// =============================================================================
+// Variables
+// =============================================================================
+
+$primary-color: #eee;
+$secondary-color: #000;
+$tertiary-color: #fff;
+
+
+// =============================================================================
+// Material Colors
+// =============================================================================
+
+$white: #FFFFFF;
+$black: #000000;
+$red: #E6AF4B;
+$pink: #E91E63;
+$purple: #E91E63;
+$deep-purple: #673AB7;
+$indigo: #3F51B5;
+$blue: #2196F3;
+$light-blue: #03A9F4;
+$cyan: #00BCD4;
+$teal: #009688;
+$green: #4CAF50;
+$light-green: #8BC34A;
+$lime: #CDDC39;
+$yellow: #FFEB3B;
+$amber: #FFC107;
+$orange: #FF9800;
+$deep-orange: #FF5722;
+$brown: #795548;
+$grey: #9E9E9E;
+$blue-grey: #607D8B;
+
+
+// =============================================================================
+// Variables
+// =============================================================================
+
+$positive-background: $green;
+$positive-color: darken($green, 20%);
+
+$negative-background: $red;
+$negative-color: darken($red, 20%);
+
+$warning-background: $orange;
+$warning-color: darken($orange, 20%);
+
+$error-background: $red;
+$error-color: darken($red, 20%);
+
+$neutral-background: $grey;
+$neutral-color: darken($grey, 20%);
+
+
+// =============================================================================
+// Fonts
+// =============================================================================
+
+$base-font-family: Helvetica, arial, sans-serif;
+$header-font-family: Helvetica, arial, sans-serif;
+
+$base-font-size: 1.5rem;
+$header-font-size: $base-font-size;
+
+
+// =============================================================================
+// Details
+// =============================================================================
+
+$base-radius: 3px;
+
+
+// =============================================================================
+// Breakpoints
+// =============================================================================
+
+$mobile-width: 35.5em;
+$tablet-width: 48em;
+$desktop-width: 64em;
+$desktopxl-width: 80em;
+
+$tablet: 'only screen and (min-width: #{$mobile-width})';
+$desktop: 'only screen and (min-width: #{$tablet-width})';
+$desktop-l: 'only screen and (min-width: #{$desktop-width})';
+$desktop-xl: 'only screen and (min-width: #{$desktopxl-width})';
