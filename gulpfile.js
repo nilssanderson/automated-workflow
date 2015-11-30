@@ -4,9 +4,10 @@
 
 var fs = require('fs');
 
+
 // Add gulp modules
 var gulp = require('gulp'),
-    browserSync = require('browser-sync').create(),
+    browserSync = require('browser-sync'),
     concat = require('gulp-concat'),
     minifyCss = require('gulp-minify-css'),
     nano = require('gulp-cssnano'),
@@ -15,6 +16,9 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     styleguide = require('sc5-styleguide'),
     sass = require('gulp-sass');
+
+var bs1 = browserSync.create("first server"); // Create a named instance
+var bs2 = browserSync.create("second server"); // Create a second named instance
 
     // Add postCSS plugins
     var autoprefixer                 = require('autoprefixer'),
@@ -120,9 +124,24 @@ gulp.task('css', function() {
 // Static Server + watching scss/html files
 gulp.task('browser-sync-static', function() {
 
-    browserSync.init({
-        server: './'
+    bs1.init({
+      port: 3006,
+      server: {
+        baseDir: './',
+        index: 'index.html'
+      },
+      ui: {
+        port: 3009
+      }
     });
+
+    // bs2.init({
+    //   port: 3011,
+    //   server: './',
+    //   ui: {
+    //     port: 3014
+    //   }
+    // });
 
     runSequence(
       'sass',
@@ -158,7 +177,7 @@ gulp.task('styleguide:generate', function() {
         },
         title: customerName + ' - Styleguide',
         server: true,
-        port: 3002,
+        port: 3003,
         rootPath: buildPath + 'docs/',
         overviewPath: 'README.md'
       }))

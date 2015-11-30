@@ -4,6 +4,9 @@
 # Node
 node_modules/
 
+# Bower
+bower_components/
+
 # Not required
 css/
 
@@ -24,6 +27,7 @@ xcuserdata/
 build/
 *.[oa]
 *.pyc
+backstop_data/
 
 # Backup files
 *~.nib

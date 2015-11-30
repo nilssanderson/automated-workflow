@@ -3,18 +3,29 @@
 // =============================================================================
 
 
-
 // Set Grid (1170gs default)
 $column-width: 70px;
-$gutter: 30px;
+$gutter: 20px;
 $columns: 12;
 $padding: ($gutter / 2);
 
-// Should it be responsive?
-$responsive: true;
+$column-background: $black;
+$column-min-height: $gutter;
+
+
+// ============================================================================= styleguide:ignore:start
 
 // Set container width relative to user variables
 $width: ($column-width * $columns) + ($gutter * ($columns - 1) + ($gutter * 2));
+
+$gutter-percentage: (($gutter / $width) * 100%);
+
+// Calculate grid size in pixels
+// then convert to percentage
+$grid-size: (($column-width * $columns) + ($gutter * ($columns - 1)));
+$grid-size: ($grid-size / $width) * 100%;
+
+// ============================================================================= styleguide:ignore:end
 
 
 // =============================================================================
@@ -66,50 +77,80 @@ Styleguide 2.2
 // Grid Code
 // =============================================================================
 
-// Set Base Container
-.grid {
-  // Set container width if responsive
-  @if $responsive == true {
-  	max-width:$width; // leave in or not?
-  	width:100%;
-  } @else {
-  	width:$width;
-  }
+.ui-usage {
+  margin: $gutter;
+  padding: 0 $padding;
+  min-height: $column-min-height;
+  width: $column-width;
+}
 
+// Set Base Container
+.container,
+.grid {
   @include clearfix;
   margin: $gutter auto 0;
+  max-width: $width; // leave in or not?
   padding: 0;
+  width:100%;
 }
+
+// Set background color of columns
+div[class^="col-"] {
+  background-color: $column-background;
+};
+
+// ============================================================================= styleguide:ignore:start
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  float: left;
+  margin: 0 0 $gutter-percentage $gutter-percentage;
+  min-height: $column-min-height;
+  width: $grid-size;
+}
+
+// =============================================================================
+// Tablet
+// =============================================================================
+
+.col-1, .col-2 {
+  @media #{$tablet} {
+    // Fourths
+    width: ($grid-size / 4.1) - ($gutter-percentage / 2.2);
+  }
+}
+
+.col-3, .col-4, .col-5, .col-6 {
+  @media #{$tablet} {
+    // Half
+    width: ($grid-size / 2) - ($gutter-percentage / 2);
+  }
+}
+
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  @media #{$tablet} {
+    width: $grid-size;
+  }
+}
+
+
+// =============================================================================
+// Desktop
+// =============================================================================
 
 // Define Individual Grid Classes
 @for $i from 1 to ($columns + 1) {
 	// Calculate grid size in pixels
-	$grid-size: ($column-width * $i) + ($gutter * ($i - 1));
+  // then convert to percentage
+	$grid-size: (($column-width * $i) + ($gutter * ($i - 1)));
+  $grid-size: ($grid-size / $width) * 100%;
 
-	// Calculate responsive grid sizes if required
-	@if $responsive == true {
-		// Calculate grid size in pixels
-		$grid-size: ($grid-size / $width) * 100%;
-
-		// Get Gutter Percentage for Grids
-		$gutter-percentage: ($gutter / $width) * 100%;
-
-		.col-#{$i} {
-      background-color: $black;
-      min-height: $gutter;
-			width: $grid-size;
-			float: left;
+	.col-#{$i} {
+    @media #{$desktop} {
 			margin:0 0 $gutter-percentage $gutter-percentage;
-		}
-
-	} @else {
-		$grid-size: ($grid-size / $width) * 100%;
-		.col-#{$i} {
-      background-color: $black;
-      min-height: $gutter;
 			width: $grid-size;
-			float: left;
-			margin:0 0 $gutter $gutter;
-		}
+    }
 	}
 }
+
+// ============================================================================= styleguide:ignore:end

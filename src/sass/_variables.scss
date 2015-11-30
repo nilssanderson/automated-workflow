@@ -69,6 +69,8 @@ $header-font-size: $base-font-size;
 // Details
 // =============================================================================
 
+$body-background: $white;
+$body-color: $black;
 $base-radius: 3px;
 
 
@@ -77,11 +79,31 @@ $base-radius: 3px;
 // =============================================================================
 
 $mobile-width: 35.5em;
-$tablet-width: 48em;
-$desktop-width: 64em;
+$tablet-width: 48.1em;
+$desktop-width: 65em;
 $desktopxl-width: 80em;
 
 $tablet: 'only screen and (min-width: #{$mobile-width})';
 $desktop: 'only screen and (min-width: #{$tablet-width})';
 $desktop-l: 'only screen and (min-width: #{$desktop-width})';
 $desktop-xl: 'only screen and (min-width: #{$desktopxl-width})';
+
+  // $breakpoints-small: 24em;
+  // $breakpoints-small-2: 29.75em;
+  // $breakpoints-small-3: 39.8em;
+  // $breakpoints-med: 46.8em;
+  // $breakpoints-med-2: 48em;
+  // $breakpoints-large: 50em;
+  // $breakpoints-large-2: 54.5em;
+  // $breakpoints-xl: 60em;
+  // $breakpoints-xl-2: 67em;
+  //
+  // $bp-small: 'only screen and (min-width: #{$bp-small})';
+  // $bp-small-2: 'only screen and (min-width: #{$bp-small-2})';
+  // $bp-small-3: 'only screen and (min-width: #{$bp-small-3})';
+  // $bp-med: 'only screen and (min-width: #{$bp-med})';
+  // $bp-med-2: 'only screen and (min-width: #{$bp-med-2})';
+  // $bp-large: 'only screen and (min-width: #{$bp-large})';
+  // $bp-large-2: 'only screen and (min-width: #{$bp-large-2})';
+  // $bp-xl: 'only screen and (min-width: #{$bp-xl})';
+  // $bp-xl-2: 'only screen and (min-width: #{$bp-xl-2})';

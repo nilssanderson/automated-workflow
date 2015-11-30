@@ -1,10 +1,8 @@
-header {
-    background: green;
-    padding: 2rem;
+body {
+  background-color: $body-background;
+  color: $body-color;
 }
 
-main {
-    background: blue;
-    color: #fff;
-    padding: 1rem;
+header {
+  // padding: 10px;
 }
