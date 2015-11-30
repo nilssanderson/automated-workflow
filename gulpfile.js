@@ -12,6 +12,9 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     nano = require('gulp-cssnano'),
     postcss = require('gulp-postcss'),
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
+    htmlmin = require('gulp-htmlmin'),
     runSequence = require('gulp-run-sequence'),
     uglify = require('gulp-uglify'),
     styleguide = require('sc5-styleguide'),
@@ -55,8 +58,28 @@ gulp.task('greet', function () {
 
 // Fonts
 gulp.task('fonts', function() {
-    return gulp.src([srcPath + 'fonts/fontawesome-webfont.*'])
-      .pipe(gulp.dest(buildPath + 'fonts/'));
+  return gulp.src([srcPath + 'fonts/fontawesome-webfont.*'])
+    .pipe(gulp.dest(buildPath + 'fonts/'));
+});
+
+
+// Images
+gulp.task('images', function() {
+  return gulp.src(srcPath + 'images/*')
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest(buildPath + 'images'));
+});
+
+
+// Minify HTML
+gulp.task('minifyHtml', function() {
+  return gulp.src(srcPath + '/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(buildPath));
 });
 
 
@@ -74,29 +97,29 @@ gulp.task('sass:watch', function () {
 
 
 // CSS
-gulp.task('css', function() {
+// gulp.task('css', function() {
+//
+//     // Use the postCSS plugins
+//     var processors = [
+//         autoprefixer({
+//             browsers: ['last 1 version']
+//         }),
+//         colorguard,
+//         cssnext,
+//         fontMagician,
+//         precss,
+//         simpleVars
+//     ];
+//
+//     return gulp.src(srcPath + '**/*.css')
+//         .pipe(postcss(processors))
+//         .pipe(gulp.dest(cssPath));
+//
+// });
 
-    // Use the postCSS plugins
-    var processors = [
-        autoprefixer({
-            browsers: ['last 1 version']
-        }),
-        colorguard,
-        cssnext,
-        fontMagician,
-        precss,
-        simpleVars
-    ];
 
-    return gulp.src(srcPath + '**/*.css')
-        .pipe(postcss(processors))
-        .pipe(gulp.dest(cssPath));
-
-});
-
-
-  // Minify
-  gulp.task('minifyCss', ['css'], function () {
+  // Minify CSS
+  gulp.task('minifyCss', function () {
 
       return gulp.src(cssPath + '**/*.css')
           .pipe(minifyCss())
@@ -131,7 +154,7 @@ gulp.task('browser-sync-static', function() {
         index: 'index.html'
       },
       ui: {
-        port: 3009
+        port: 3008
       }
     });
 
@@ -146,11 +169,15 @@ gulp.task('browser-sync-static', function() {
     runSequence(
       'sass',
       'fonts',
+      'images',
       'minifyCss',
+      'minifyHtml',
       'styleguide');
 
-    gulp.watch(sassPath + '**/*.scss', ['sass','fonts','minifyCss','styleguide']);
-    gulp.watch('**/*.html').on('change', browserSync.reload);
+    gulp.watch(sassPath + '**/*.scss', ['sass','minifyCss','styleguide']);
+    gulp.watch(srcPath + 'fonts/*', ['fonts']);
+    gulp.watch(srcPath + 'images/*', ['images']);
+    gulp.watch('**/*.html', ['minifyHtml']).on('change', bs1.reload);
 });
 
 
@@ -177,7 +204,7 @@ gulp.task('styleguide:generate', function() {
         },
         title: customerName + ' - Styleguide',
         server: true,
-        port: 3003,
+        port: 3007,
         rootPath: buildPath + 'docs/',
         overviewPath: 'README.md'
       }))
@@ -199,4 +226,5 @@ gulp.task('styleguide:applystyles', function() {
 //   gulp.watch(['*.css'], ['styleguide']);
 // });
 
+gulp.task('default', ['browser-sync-static']);
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);

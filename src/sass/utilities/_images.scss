@@ -1,0 +1,45 @@
+// =============================================================================
+// Images Variables
+// =============================================================================
+
+$image-small-max-width: 150px;
+$image-medium-max-width: 400px;
+$image-large-max-width: 900px;
+$image-xlarge-max-width: 1200px;
+
+
+// =============================================================================
+// Images Styleguide
+// =============================================================================
+
+/*
+
+Images
+
+markup:
+<img src="http://placehold.it/350x150/999999/000000/?text=Placeholder" class="small" />
+<img src="http://placehold.it/350x150/999999/000000/?text=Placeholder" class="medium" />
+<img src="http://placehold.it/350x150/999999/000000/?text=Placeholder" class="large" />
+<img src="http://placehold.it/350x150/999999/000000/?text=Placeholder" class="xlarge" />
+<img src="http://placehold.it/350x150/999999/000000/?text=Placeholder" />
+
+Styleguide 2.4
+
+*/
+
+
+// =============================================================================
+// Images Code
+// =============================================================================
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  width: 100%;
+
+  &.small { max-width: $image-small-max-width; }
+  &.medium { max-width: $image-medium-max-width; }
+  &.large { max-width: $image-large-max-width; }
+  &.xlarge { max-width: $image-xlarge-max-width; }
+}
