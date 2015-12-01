@@ -159,11 +159,13 @@ gulp.task('browser-sync-static', function() {
     });
 
     // bs2.init({
-    //   port: 3011,
-    //   server: './',
-    //   ui: {
-    //     port: 3014
-    //   }
+    //   open: 'external',
+    //   host: 'project.dev',
+    //   proxy: {
+    //     target: "http://project.dev",
+    //     ws: true
+    //   },
+    //   port: 4000
     // });
 
     runSequence(

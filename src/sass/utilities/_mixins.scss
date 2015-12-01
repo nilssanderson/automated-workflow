@@ -23,6 +23,10 @@
   @include vendor-prefix(box-sizing, $value);
 }
 
+@mixin border-radius($radius-top-left: 5px, $radius-top-right: 5px, $radius-bottom-right: 5px, $radius-bottom-left: 5px) {
+	@include vendor-prefix(border-radius, $radius-top-left $radius-top-right $radius-bottom-left $radius-bottom-left);
+}
+
 @mixin make-fa {
   @extend .#{$fa-css-prefix};
 }

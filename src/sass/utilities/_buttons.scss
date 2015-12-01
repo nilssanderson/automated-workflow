@@ -15,7 +15,7 @@ $button-fancy-hover-background-color: $grey;
 $button-fancy-hover-text-color: $black;
 
 $button-margin: 0;
-$button-padding: 1rem 2rem;
+$button-padding: .5rem 1rem;
 
 $button-border-color: $grey;
 $button-border-style: solid;
@@ -62,7 +62,7 @@ button,
   border-color: $button-border-color;
   border-style: $button-border-style;
   border-width: $button-border-width;
-  border-radius: $button-radius;
+  @include border-radius($button-radius, $button-radius, $button-radius, $button-radius);
   color: $button-text-color;
   cursor: pointer;
   display: inline-block;
@@ -154,7 +154,7 @@ button,
   		}
 
   		i {
-  			font-size: 80%;
+  			font-size: 90%;
   			padding-left: .5em;
   		}
   	}
