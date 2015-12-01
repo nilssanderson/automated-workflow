@@ -58,7 +58,7 @@ gulp.task('greet', function () {
 
 // Fonts
 gulp.task('fonts', function() {
-  return gulp.src([srcPath + 'fonts/fontawesome-webfont.*'])
+  return gulp.src([srcPath + 'fonts/*'])
     .pipe(gulp.dest(buildPath + 'fonts/'));
 });
 
@@ -77,7 +77,7 @@ gulp.task('images', function() {
 
 // Minify HTML
 gulp.task('minifyHtml', function() {
-  return gulp.src(srcPath + '/*.html')
+  return gulp.src('*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(buildPath));
 });
@@ -150,7 +150,7 @@ gulp.task('browser-sync-static', function() {
     bs1.init({
       port: 3006,
       server: {
-        baseDir: './',
+        baseDir: './build/',
         index: 'index.html'
       },
       ui: {
@@ -177,7 +177,7 @@ gulp.task('browser-sync-static', function() {
     gulp.watch(sassPath + '**/*.scss', ['sass','minifyCss','styleguide']);
     gulp.watch(srcPath + 'fonts/*', ['fonts']);
     gulp.watch(srcPath + 'images/*', ['images']);
-    gulp.watch('**/*.html', ['minifyHtml']).on('change', bs1.reload);
+    gulp.watch('*.html', ['minifyHtml']).on('change', bs1.reload);
 });
 
 
@@ -189,12 +189,7 @@ gulp.task('browser-sync-dynamic', function() {
 });
 
 
-
-
-
-
 // Styleguide
-
 gulp.task('styleguide:generate', function() {
   return gulp.src(sassPath + '**/*.scss')
     .pipe(styleguide.generate({

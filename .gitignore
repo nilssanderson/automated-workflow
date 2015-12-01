@@ -28,6 +28,7 @@ build/
 *.[oa]
 *.pyc
 backstop_data/
+tests/
 
 # Backup files
 *~.nib
