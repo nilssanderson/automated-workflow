@@ -1,6 +1,8 @@
 [submodule "antelope"]
 	path = antelope
 	url = https://github.com/nilssanderson/antelope.git
+	branch = master
 [submodule "testing"]
 	path = testing
 	url = https://github.com/nilssanderson/testing.git
+	branch = master
